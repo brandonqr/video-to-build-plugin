@@ -49,9 +49,9 @@ Target directory: {target_dir}
 Spec: {spec}
 Tool bindings: {bindings_text}
 
-1. Using the bound media tools (Higgsfield MCP / @higgsfield/cli if available, otherwise procedural/Blender renders), generate required reference images or backdrop media into {target_dir}/public/media/.
-2. Using Blender MCP, `cli-anything-blender`, or headless Blender (resolve the executable cross-platform via `BLENDER_BIN` env var, `blender` on PATH, or `resolve_blender.py` — then run `<blender> -b --python ...`), build the consistent hero 3D model with clean origin, materials, and named animated parts {spec['animated_nodes']}, and export it to {spec['hero_glb_path']}.
-3. Verify the exported .glb file exists and is non-empty, and save at least one Blender preview render PNG to verify geometry.
+1. Using the bound media tools (Higgsfield MCP / `@higgsfield/cli` with `< /dev/null` if available, otherwise procedural/Blender renders), generate required reference images and Seedance 2.5 transition videos (`--mode omni_reference --start-image ... --end-image ...`) into {target_dir}/public/media/, stitched with `ffmpeg` (`-g 3 -movflags +faststart`) for smooth Blob-URL scroll scrubbing.
+2. For complex landmarks/environments/organic heroes, first generate an **isolated 1:1 studio diorama reference image** (`gpt_image_2_6` on a clean white/neutral studio backdrop with NO clouds, NO sky, and NO cropped distant mountains), convert it to a textured `.glb` using Higgsfield `tripo_h3_1_image_to_3d` / `meshy_v7_image_to_3d`, and run `optimize_glb.py` in headless Blender (`resolve_blender.py`) to normalize scale/origin, downscale 4K textures to 2K WebP (~3-5 MB), and render an audit PNG. Reserve procedural `bpy` scripts for simple articulated mechanical models.
+3. Verify the exported .glb file exists, is under ~6 MB, has clean visual geometry in the preview PNG, and check orientation (`+Z` front in Three.js).
 Return a summary of generated files and any fallback used.""",
         role="3D & Assets Agent",
         schema={"type": "string"},

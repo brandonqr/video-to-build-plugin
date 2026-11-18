@@ -14,7 +14,8 @@ Checks what tools the `blueprint.json` requires and resolves each one to a worki
 
 1. **Higgsfield (images, concepts, video footage, 3D generation)**:
    * **MCP option**: Check if the `higgsfield` MCP server (`https://mcp.higgsfield.ai/mcp`) is connected and authenticated.
-   * **CLI option**: Check if `@higgsfield/cli` (`higgsfield`) is installed and logged in (`higgsfield --help` / `higgsfield auth status`).
+   * **CLI option**: Check if `@higgsfield/cli` (`higgsfield`) is installed and logged in. On Windows, always pass `< /dev/null` when running `higgsfield generate ...` so stdin does not block, and prefer Git Bash (`bash.exe`) or `higgsfield.cmd`.
+   * **3D & Video models inside Higgsfield**: Prefer `tripo_h3_1_image_to_3d` / `tripo_h3_1_multiview_to_3d` / `meshy_v7_image_to_3d` for detailed 3D `.glb` meshes from reference images, and `seedance_2_5` (`--mode omni_reference --start-image ... --end-image ...`) for cinematic scroll-transition video clips.
    * **Fallback**: If Higgsfield is unavailable or unauthenticated, generate procedural textures/SVG/shaders or local 3D geometry in Blender instead of failing.
 
 2. **Blender (consistent 3D meshes, materials, animations -> `.glb`)**:

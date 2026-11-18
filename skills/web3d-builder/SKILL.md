@@ -22,5 +22,6 @@ Orchestrates specialized agents to turn `blueprint.json` + `tool_bindings.json` 
      "product_brief": "Build the interactive 3D website following the video's architecture"
    }
    ```
-3. **Review workflow output** (`Logs:` and `Output:`): verify the generated `.glb` assets, `npm run build` exit code, and visual QA report.
-4. **Present the runnable app** (local dev/preview command, generated files, and any manual step such as Higgsfield OAuth if not yet signed in).
+3. **Optimize & audit 3D assets**: For Tripo/Meshy `.glb` outputs, run [optimize_glb.py](./scripts/optimize_glb.py) via headless Blender (`<blender> -b --python optimize_glb.py -- --input raw.glb --output public/models/hero.glb --preview hero-preview.png`) to normalize scale/origin, compress textures to 2K WebP, and visually inspect the rendered audit PNG.
+4. **Review workflow output** (`Logs:` and `Output:`): verify the generated `.glb` assets, `npm run build` exit code, and visual QA report.
+5. **Present the runnable app** (local dev/preview command, generated files, and any manual step such as Higgsfield OAuth if not yet signed in).
