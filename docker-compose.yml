@@ -1,0 +1,23 @@
+services:
+  toolbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: video-to-build-toolbox:latest
+    container_name: video-to-build-toolbox
+    stdin_open: true
+    tty: true
+    working_dir: /workspace
+    ports:
+      - "5173:5173"
+      - "4173:4173"
+    volumes:
+      - ./workspace:/workspace
+      - higgsfield_config:/root/.config
+      - cli_anything_cache:/root/.cache
+    environment:
+      - BLENDER_BIN=/usr/bin/blender
+
+volumes:
+  higgsfield_config:
+  cli_anything_cache:

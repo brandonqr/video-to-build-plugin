@@ -1,0 +1,8 @@
+{
+  "name": "video-to-build",
+  "version": "1.0.0",
+  "description": "Reusable video-to-product multi-agent workflow (YouTube blueprint -> tool resolver -> Blender/Higgsfield/Three.js build & QA).",
+  "author": {
+    "name": "alexi"
+  }
+}
